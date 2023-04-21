@@ -1,0 +1,32 @@
+
+{% extends 'base.html' %}
+{% block content %}
+
+
+      <div class="card" style="width: 600px;margin: 0 auto;margin-top: 100px">
+    <div class="card-header">Edit Message</div>
+    <div class="card-body">
+                   {% if message %}
+<div class="alert alert-warning">{{ message }}</div>
+
+    {% endif %}
+        <form role="form"  action="/modify" method="post" style="margin: 0 auto">
+              <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+
+            <input value="{{ data.id }}" name="id" hidden>
+            <input value="{{ data.nickname }}" name="nickcname" hidden>
+            <input value="{{ data.date }}" name="date" hidden>
+	<div class="form-group">
+		<textarea class="form-control" rows="3" name="info">{{ data.info }}</textarea>
+	</div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+
+</form>
+
+
+    </div>
+  </div>
+
+
+
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'base_admin.html' %}
+{% block admin %}
+
+    <div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10">
+            <h1 style="color:dark;text-align: center" >Message List</h1>
+
+
+            <table class="table table-striped" style="margin-top: 10px">
+    <thead>
+<tr>
+                <th>ID no.</th>
+                <th>username</th>
+                <th>Message Information</th>
+                <th>Message Time</th>
+                <th>Delete</th>
+            </tr>
+</thead>
+    <tbody>
+            {% for i in data %}
+            <tr>
+                <td>{{i.id}}</td>
+                <td>{{i.nikename}}</td>
+                <td>{{i.info}}</td>
+                <td>{{i.date}}</td>
+                <td>
+                                            <a href="/admin/message/delete?id={{i.id}}">delete</a>
+
+
+
+                <td>
+
+                  </td>
+            </tr>
+            {% endfor %}
+    </tbody>
+</table>
+
+    </div>
+</div>
+
+{% endblock %}

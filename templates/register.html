@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% block title %}Register System{% endblock %}
+
+{% block content %}
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.js"></script>
+
+
+      <div class="card" style="width: 400px;margin: 0 auto;margin-top: 100px">
+    <div class="card-header">Register</div>
+    <div class="card-body">
+
+<form action="" method="post">
+    {% if message %}
+<div class="alert alert-warning">{{ message }}</div>
+
+    {% endif %}
+    <div class="form-group">
+        <label for="Fullname">Full name</label>
+        <input name="fullname" class="form-control" id="inputFullName" aria-describedby="emailHelp" placeholder="Enter full name">
+        <small id="fullName" class="form-text text-muted">Please enter your full name(First name and Last name)</small>
+  </div>
+  <div class="form-group">
+        <label for="InputEmail">Email address</label>
+        <input name="email" class="form-control" id="InputEmail"  placeholder="Enter email">
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+  <div class="form-group">
+    <label for="InputPassword">Password</label>
+    <input type="password" name="password1" class="form-control" id="InputPassword" placeholder="Password">
+  </div>
+
+    <div class="form-group">
+    <label for="InputPassword2">Repeat Password</label>
+    <input type="password" name="password2" class="form-control" id="InputPassword2" placeholder="Repeat Password">
+
+    </div>
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+
+  <div class="form-group">
+      <label for="InputVcode">Vcode</label>
+      <div class="row">
+          <div class="col-sm-4">
+                    <img src="/vcode" id="loginvcode" onclick="this.src='/vcode?'+Math.random()" style="height: 40px"/>
+
+          </div>
+            <div class="col-sm-8">
+      <input type="text" name="Vcode" class="form-control" id="InputVcode" placeholder="Vcode">
+      </div>
+  </div>
+  </div>
+  <div class="form-group">
+      <label for="InputVcode">Email code</label>
+      <div class="row">
+
+            <div class="col-sm-8">
+      <input type="text" name="email_code" class="form-control" id="InputVcode" placeholder="Vcode">
+      </div>
+             <div class="col-sm-4">
+              <button type="button" onclick="sendemail()" class="btn btn-primary" style="height: 40px">send</button>
+          </div>
+  </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+
+
+</form>
+
+    </div>
+  </div>
+
+<script>
+function sendemail(){
+    var email = document.getElementById("InputEmail").value;
+    if (email===""){
+        alert("email can not be empty");
+        return;
+    }
+
+    $.get("/sendemail?email="+email,function (data) {
+    alert("send email success");
+    });
+
+}
+</script>
+
+
+{% endblock %}
+

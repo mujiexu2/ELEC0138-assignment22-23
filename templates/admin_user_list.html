@@ -1,0 +1,47 @@
+{% extends 'base_admin.html' %}
+{% block admin %}
+
+    <div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10">
+            <h1 style="color:dark;text-align: center" >User List</h1>
+
+    <a type="button" class="btn btn-primary" href="/admin/user/add">Add new user</a>
+
+            <table class="table table-striped" style="margin-top: 10px">
+    <thead>
+<tr>
+                <th>ID no.</th>
+                <th>username</th>
+                <th>email</th>
+                <th>password</th>
+                <th>delete</th>
+                <th>change password</th>
+             </tr>
+</thead>
+    <tbody>
+            {% for i in data %}
+            <tr>
+                <td>{{i.id}}</td>
+                <td>{{i.name}}</td>
+                <td>{{i.email}}</td>
+                <td>{{i.password}}</td>
+                <td>
+                                            <a href="/admin/user/delete?id={{i.id}}">delete</a>
+
+
+
+                <td>
+                                         <a href="/admin/user/changpassword?id={{i.id}}">change password</a>
+
+
+                  </td>
+            </tr>
+            {% endfor %}
+    </tbody>
+</table>
+
+    </div>
+</div>
+
+{% endblock %}
