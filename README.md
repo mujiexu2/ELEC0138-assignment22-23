@@ -4,6 +4,8 @@ UCL ELEC0138 course final assignment by TEAM 3
 
 The tutorial video link is : https://youtu.be/KSkep858Z9w
 
+To run the website, run the app.py, follow the tutorial video.
+
 Group Member : Fu Siyi, Xu Mujie, Liu Yusen, Veerapatra Lilitwong
 
 student number: 22079028, 19027325, 22081179, 22115386
